@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feasto - Order Tracking</title>
+    <link rel="stylesheet" href="order-tracking.css">
+</head>
+<body>
+    <div class="tracking-container">
+        <!-- Top Navigation Bar -->
+        <nav class="top-navbar">
+            <div class="navbar-content">
+                <a href="#" class="nav-link active">Orders</a>
+                <a href="cart.html" class="nav-link">Cart</a>
+                <a href="restaurant-menu.html" class="nav-link">Menu</a>
+                <a href="home.html" class="nav-link">Home</a>
+                <a href="profile.html" class="nav-link">Profile</a>
+                <a href="#" class="nav-link logout-link" onclick="logout(event)">Logout</a>
+            </div>
+        </nav>
+
+        <!-- Tracking Header -->
+        <div class="tracking-header">
+            <h1>Order Tracking</h1>
+        </div>
+
+        <!-- Tracking Content -->
+        <div class="tracking-content">
+            <!-- Left Section -->
+            <div class="tracking-left">
+                <!-- Order Status Timeline -->
+                <div class="tracking-section">
+                    <h3>Track your Order</h3>
+                    <div class="timeline">
+                        <div class="timeline-item completed">
+                            <div class="timeline-icon">✓</div>
+                            <div class="timeline-text">
+                                <p class="timeline-title">Order Placed</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item completed">
+                            <div class="timeline-icon">✓</div>
+                            <div class="timeline-text">
+                                <p class="timeline-title">Preparing</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item active">
+                            <div class="timeline-icon">🛵</div>
+                            <div class="timeline-text">
+                                <p class="timeline-title">Out for Delivery</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-icon">🏠</div>
+                            <div class="timeline-text">
+                                <p class="timeline-title">Delivered</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Status Message -->
+                <div class="status-message">
+                    <p class="status-title">Your order is on the way 🛵</p>
+                    <p class="status-time">Arriving in 25 mins</p>
+                </div>
+
+                <!-- Map -->
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.9151363838024!2d77.62438!3d12.97462!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae17c8c8c8c8c9%3A0x8c8c8c8c8c8c8c8c!2sMaki%20Kitchen!5e0!3m2!1sen!2sin!4v1234567890" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="map"></iframe>
+                </div>
+
+                <!-- Delivery Partner Info -->
+                <div class="delivery-partner">
+                    <div class="partner-icon">👤</div>
+                    <div class="partner-info">
+                        <p class="partner-name">Ravi Kumar</p>
+                        <p class="partner-role">Delivery Partner</p>
+                    </div>
+                    <button class="partner-call">📞</button>
+                </div>
+            </div>
+
+            <!-- Right Section - Order Summary -->
+            <div class="tracking-right">
+                <div class="order-summary-box">
+                    <h3>Order Summary</h3>
+                    <div class="summary-row">
+                        <span>Order Id :</span>
+                        <span>#FT2458</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Total Paid :</span>
+                        <span>₹720</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Payment :</span>
+                        <span>UPI</span>
+                    </div>
+                    <div class="summary-row grand-total">
+                        <span>Grand Total</span>
+                        <span>₹ 720</span>
+                    </div>
+                    <button class="btn-help">Need Help ?</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="order-tracking.js"></script>
+</body>
+</html>

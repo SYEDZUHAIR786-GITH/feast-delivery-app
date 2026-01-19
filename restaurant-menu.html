@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maki Kitchen - Menu</title>
+    <link rel="stylesheet" href="restaurant-menu.css">
+</head>
+<body>
+    <div class="menu-container">
+        <!-- Top Navigation Bar -->
+        <nav class="top-navbar">
+            <div class="navbar-content">
+                <a href="#" class="nav-link">Orders</a>
+                <a href="cart.html" class="nav-link">Cart</a>
+                <a href="#" class="nav-link active">Menu</a>
+                <a href="home.html" class="nav-link">Home</a>
+                <a href="profile.html" class="nav-link">Profile</a>
+                <a href="#" class="nav-link logout-link" onclick="logout(event)">Logout</a>
+            </div>
+        </nav>
+
+        <!-- Restaurant Hero Image -->
+        <div class="restaurant-header">
+            <img id="headerImage" src="" alt="Restaurant banner" class="header-image">
+        </div>
+
+        <!-- Restaurant Info Card -->
+        <div class="restaurant-info-card">
+            <div class="restaurant-details">
+                <h1 class="restaurant-name" id="restaurantNameHeader"></h1>
+                <div class="restaurant-stats" id="restaurantStatsHeader"></div>
+            </div>
+        </div>
+
+        <!-- Menu Content -->
+        <div class="menu-content">
+            <!-- Category Filter -->
+            <div class="category-tabs">
+                <button class="category-tab active" data-category="recommended" onclick="switchCategory('recommended')">Recommended</button>
+                <button class="category-tab" data-category="nigiri" onclick="switchCategory('nigiri')">Nigiri</button>
+                <button class="category-tab" data-category="rolls" onclick="switchCategory('rolls')">Rolls</button>
+                <button class="category-tab" data-category="sashami" onclick="switchCategory('sashami')">Sashami</button>
+            </div>
+
+            <!-- Menu Items -->
+            <div class="menu-items" id="menuItems">
+                <!-- Menu items will be inserted here by JavaScript -->
+            </div>
+        </div>
+
+        <!-- View Cart Button -->
+        <div class="cart-footer">
+            <button class="btn-view-cart" onclick="viewCart()">View Cart →</button>
+        </div>
+    </div>
+
+    <!-- Add to Cart Modal -->
+    <div id="addToCartModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">✕</button>
+            <img id="modalItemImage" src="" alt="Item" class="modal-item-image">
+            <h2 id="modalItemName"></h2>
+            <p id="modalItemDescription"></p>
+            <div class="modal-price">
+                <span id="modalItemPrice"></span>
+            </div>
+            <div class="quantity-selector">
+                <button class="qty-btn" onclick="decreaseQuantity()">−</button>
+                <input type="number" id="quantity" value="1" min="1" readonly>
+                <button class="qty-btn" onclick="increaseQuantity()">+</button>
+            </div>
+            <button class="btn-add-to-cart" onclick="addToCart()">Add to Cart</button>
+        </div>
+    </div>
+
+    <script src="restaurant-menu.js"></script>
+</body>
+</html>

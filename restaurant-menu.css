@@ -1,0 +1,581 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    color: #333;
+    min-height: 100vh;
+}
+
+.menu-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Modern Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Top Navigation Bar */
+.top-navbar {
+    position: sticky;
+    top: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 14px 0;
+    z-index: 100;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+}
+
+.navbar-content {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #666;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.nav-link:hover {
+    color: #ff9500;
+}
+
+.nav-link.active {
+    color: #ff9500;
+    border: 2px solid #ff9500;
+}
+
+.nav-link.logout-link {
+    color: #ff6b6b;
+    margin-left: 20px;
+}
+
+/* Restaurant Header */
+.restaurant-header {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    background: #f0f0f0;
+}
+
+.header-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Restaurant Info Card */
+.restaurant-info-card {
+    background: #ffffff;
+    padding: 24px;
+    margin: -30px 20px 0 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    position: relative;
+    z-index: 10;
+}
+
+.restaurant-details {
+    max-width: 1160px;
+    margin: 0 auto;
+}
+
+.restaurant-name {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #333;
+}
+
+.restaurant-stats {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #666;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.star {
+    color: #ff9500;
+    font-size: 16px;
+}
+
+.divider {
+    color: #ddd;
+}
+
+/* Menu Content */
+.menu-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 20px;
+}
+
+/* Category Tabs */
+.category-tabs {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #f0f0f0;
+    overflow-x: auto;
+    padding-bottom: 16px;
+}
+
+.category-tabs::-webkit-scrollbar {
+    height: 4px;
+}
+
+.category-tabs::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.category-tabs::-webkit-scrollbar-thumb {
+    background: #ddd;
+    border-radius: 2px;
+}
+
+.category-tab {
+    padding: 8px 16px;
+    border: none;
+    background: transparent;
+    color: #666;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    border-bottom: 3px solid transparent;
+}
+
+.category-tab:hover {
+    color: #ff9500;
+}
+
+.category-tab.active {
+    color: #ff9500;
+    border-bottom-color: #ff9500;
+}
+
+/* Menu Items */
+.menu-items {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.menu-item {
+    display: flex;
+    gap: 20px;
+    padding: 18px;
+    background: white;
+    border-radius: 16px;
+    border: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    animation: fadeInUp 0.6s ease-out both;
+    position: relative;
+}
+
+.menu-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #ff9500, #ff6b00);
+    border-radius: 16px 16px 0 0;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.menu-item:hover {
+    border-color: transparent;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+    transform: translateY(-4px);
+}
+
+.menu-item:hover::before {
+    transform: scaleX(1);
+}
+
+.menu-item-image {
+    width: 140px;
+    height: 140px;
+    border-radius: 8px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.menu-item-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.menu-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 8px;
+}
+
+.menu-item-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+}
+
+.menu-item-price {
+    font-size: 16px;
+    font-weight: 700;
+    color: #ff9500;
+}
+
+.menu-item-description {
+    font-size: 13px;
+    color: #999;
+    margin-bottom: 12px;
+    line-height: 1.4;
+}
+
+.menu-item-footer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-add {
+    padding: 8px 20px;
+    border: 2px solid #ff9500;
+    background: transparent;
+    color: #ff9500;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.btn-add:hover {
+    background: #ff9500;
+    color: white;
+}
+
+.btn-add:active {
+    transform: scale(0.95);
+}
+
+/* Cart Footer */
+.cart-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #ffffff;
+    border-top: 1px solid #f0f0f0;
+    padding: 16px 20px;
+    display: flex;
+    justify-content: center;
+    z-index: 50;
+}
+
+.btn-view-cart {
+    width: 100%;
+    max-width: 1160px;
+    padding: 16px;
+    background: #ff9500;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.btn-view-cart:hover {
+    background: #ff8000;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 149, 0, 0.3);
+}
+
+/* Add extra padding to menu items to account for fixed footer */
+.menu-content {
+    padding-bottom: 100px;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 200;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 32px;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: #f0f0f0;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.modal-close:hover {
+    background: #e0e0e0;
+}
+
+.modal-item-image {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.modal-content h2 {
+    font-size: 24px;
+    margin-bottom: 12px;
+    color: #333;
+}
+
+.modal-content p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.modal-price {
+    font-size: 24px;
+    font-weight: 700;
+    color: #ff9500;
+    margin-bottom: 20px;
+}
+
+.quantity-selector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 24px;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    padding: 12px;
+    border-radius: 8px;
+}
+
+.qty-btn {
+    width: 36px;
+    height: 36px;
+    border: none;
+    background: white;
+    border-radius: 6px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 600;
+    color: #ff9500;
+}
+
+.qty-btn:hover {
+    background: #ff9500;
+    color: white;
+}
+
+#quantity {
+    width: 50px;
+    text-align: center;
+    border: none;
+    background: transparent;
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+}
+
+.btn-add-to-cart {
+    width: 100%;
+    padding: 14px;
+    background: #ff9500;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.btn-add-to-cart:hover {
+    background: #ff8000;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 149, 0, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .restaurant-header {
+        height: 200px;
+    }
+
+    .menu-item {
+        flex-direction: column;
+    }
+
+    .menu-item-image {
+        width: 100%;
+        height: 200px;
+    }
+
+    .navbar-content {
+        gap: 20px;
+    }
+
+    .nav-link {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+
+    .restaurant-name {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 480px) {
+    .menu-container {
+        padding: 0;
+    }
+
+    .restaurant-header {
+        height: 180px;
+    }
+
+    .restaurant-info-card {
+        margin: -20px 12px 0 12px;
+        padding: 16px;
+    }
+
+    .restaurant-name {
+        font-size: 20px;
+    }
+
+    .restaurant-stats {
+        font-size: 12px;
+    }
+
+    .menu-content {
+        padding: 20px 12px 100px 12px;
+    }
+
+    .category-tabs {
+        margin-bottom: 20px;
+    }
+
+    .category-tab {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+
+    .menu-item {
+        gap: 12px;
+        padding: 12px;
+    }
+
+    .menu-item-image {
+        width: 100px;
+        height: 100px;
+    }
+
+    .menu-item-name {
+        font-size: 14px;
+    }
+
+    .modal-content {
+        padding: 24px;
+    }
+}

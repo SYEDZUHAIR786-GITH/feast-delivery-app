@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feasto - Profile</title>
+    <link rel="stylesheet" href="profile.css">
+</head>
+<body>
+    <div class="profile-container">
+        <!-- Top Navigation Bar -->
+        <nav class="top-navbar">
+            <div class="navbar-content">
+                <a href="order-tracking.html" class="nav-link">Orders</a>
+                <a href="cart.html" class="nav-link">Cart</a>
+                <a href="restaurant-menu.html" class="nav-link">Menu</a>
+                <a href="home.html" class="nav-link">Home</a>
+                <a href="#" class="nav-link active">Profile</a>
+                <a href="#" class="nav-link logout-link" onclick="logout(event)">Logout</a>
+            </div>
+        </nav>
+
+        <!-- Profile Content -->
+        <div class="profile-content">
+            <!-- Left Section - Profile Info -->
+            <div class="profile-left">
+                <!-- Profile Header -->
+                <div class="profile-header">
+                    <div class="profile-avatar">👤</div>
+                    <div class="profile-info">
+                        <h1 class="profile-name" id="profileName">John Doe</h1>
+                        <p class="profile-email" id="profileEmail">john@example.com</p>
+                        <button class="btn-edit-profile" onclick="editProfile()">Edit Profile</button>
+                    </div>
+                </div>
+
+                <!-- Profile Sections -->
+                <div class="profile-sections">
+                    <!-- Saved Addresses -->
+                    <div class="profile-section">
+                        <div class="section-header" onclick="toggleSection('addresses')">
+                            <h3>📍 Saved Addresses</h3>
+                            <span class="toggle-icon">+</span>
+                        </div>
+                        <div class="section-content hidden" id="addresses">
+                            <div class="address-list" id="addressList">
+                                <!-- Addresses will be loaded here -->
+                            </div>
+                            <button class="btn-add-item" onclick="openAddAddressModal()">+ Add New Address</button>
+                        </div>
+                    </div>
+
+                    <!-- Payment Methods -->
+                    <div class="profile-section">
+                        <div class="section-header" onclick="toggleSection('payments')">
+                            <h3>💳 Payment Methods</h3>
+                            <span class="toggle-icon">+</span>
+                        </div>
+                        <div class="section-content hidden" id="payments">
+                            <div class="payment-list" id="paymentList">
+                                <!-- Payment methods will be loaded here -->
+                            </div>
+                            <button class="btn-add-item" onclick="openAddPaymentModal()">+ Add Payment Method</button>
+                        </div>
+                    </div>
+
+                    <!-- Preferences -->
+                    <div class="profile-section">
+                        <div class="section-header" onclick="toggleSection('preferences')">
+                            <h3>⚙️ Preferences</h3>
+                            <span class="toggle-icon">+</span>
+                        </div>
+                        <div class="section-content hidden" id="preferences">
+                            <div class="preference-item">
+                                <label class="preference-label">
+                                    <input type="checkbox" id="notificationsEnabled" checked onchange="savePreferences()">
+                                    <span>Enable Notifications</span>
+                                </label>
+                            </div>
+                            <div class="preference-item">
+                                <label class="preference-label">
+                                    <input type="checkbox" id="promotionsEnabled" checked onchange="savePreferences()">
+                                    <span>Receive Promotional Offers</span>
+                                </label>
+                            </div>
+                            <div class="preference-item">
+                                <label class="preference-label">
+                                    <input type="checkbox" id="newsletterEnabled" onchange="savePreferences()">
+                                    <span>Subscribe to Newsletter</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Help & Support -->
+                    <div class="profile-section">
+                        <div class="section-header" onclick="toggleSection('support')">
+                            <h3>❓ Help & Support</h3>
+                            <span class="toggle-icon">+</span>
+                        </div>
+                        <div class="section-content hidden" id="support">
+                            <a href="#" class="support-link">📞 Contact Us</a>
+                            <a href="#" class="support-link">💬 Chat with Support</a>
+                            <a href="#" class="support-link">📋 FAQ</a>
+                            <a href="#" class="support-link">📜 Terms & Conditions</a>
+                            <a href="#" class="support-link">🔒 Privacy Policy</a>
+                        </div>
+                    </div>
+
+                    <!-- Account Settings -->
+                    <div class="profile-section">
+                        <div class="section-header" onclick="toggleSection('account')">
+                            <h3>🔐 Account Settings</h3>
+                            <span class="toggle-icon">+</span>
+                        </div>
+                        <div class="section-content hidden" id="account">
+                            <button class="btn-account-action" onclick="changePassword()">Change Password</button>
+                            <button class="btn-account-action" onclick="openDeleteAccountModal()">Delete Account</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Section - Statistics -->
+            <div class="profile-right">
+                <!-- Stats Card -->
+                <div class="stats-card">
+                    <h3>Your Statistics</h3>
+                    <div class="stat-item">
+                        <span class="stat-label">Total Orders</span>
+                        <span class="stat-value" id="totalOrders">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Total Spent</span>
+                        <span class="stat-value" id="totalSpent">₹ 0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Loyalty Points</span>
+                        <span class="stat-value" id="loyaltyPoints">0</span>
+                    </div>
+                </div>
+
+                <!-- Referral Card -->
+                <div class="referral-card">
+                    <h3>🎁 Refer & Earn</h3>
+                    <p>Share your referral code with friends and earn rewards!</p>
+                    <div class="referral-code">
+                        <input type="text" id="referralCode" value="FEASTO123" readonly>
+                        <button class="btn-copy" onclick="copyReferralCode()">Copy</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Profile Modal -->
+    <div id="editProfileModal" class="modal">
+        <div class="modal-content">
+            <h2>Edit Profile</h2>
+            <form onsubmit="saveProfile(event)">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="editName" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="editEmail" required>
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" id="editPhone">
+                </div>
+                <div class="form-buttons">
+                    <button type="submit" class="btn-primary">Save Changes</button>
+                    <button type="button" class="btn-secondary" onclick="closeModal('editProfileModal')">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Address Modal -->
+    <div id="addAddressModal" class="modal">
+        <div class="modal-content">
+            <h2>Add New Address</h2>
+            <form onsubmit="saveAddress(event)">
+                <div class="form-group">
+                    <label>Address Type</label>
+                    <select id="addressType" required>
+                        <option value="home">Home</option>
+                        <option value="work">Work</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Full Address</label>
+                    <textarea id="addressText" rows="3" required></textarea>
+                </div>
+                <div class="form-buttons">
+                    <button type="submit" class="btn-primary">Save Address</button>
+                    <button type="button" class="btn-secondary" onclick="closeModal('addAddressModal')">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Payment Modal -->
+    <div id="addPaymentModal" class="modal">
+        <div class="modal-content">
+            <h2>Add Payment Method</h2>
+            <form onsubmit="savePayment(event)">
+                <div class="form-group">
+                    <label>Payment Type</label>
+                    <select id="paymentType" required>
+                        <option value="upi">UPI</option>
+                        <option value="credit">Credit Card</option>
+                        <option value="debit">Debit Card</option>
+                        <option value="wallet">Wallet</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Payment Details</label>
+                    <input type="text" id="paymentDetails" placeholder="Enter payment details" required>
+                </div>
+                <div class="form-buttons">
+                    <button type="submit" class="btn-primary">Add Payment</button>
+                    <button type="button" class="btn-secondary" onclick="closeModal('addPaymentModal')">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Delete Account Modal -->
+    <div id="deleteAccountModal" class="modal">
+        <div class="modal-content">
+            <h2>Delete Account</h2>
+            <p style="color: #ff6b6b; margin-bottom: 16px;">⚠️ This action cannot be undone. All your data will be permanently deleted.</p>
+            <form onsubmit="deleteAccount(event)">
+                <div class="form-group">
+                    <label>Type your email to confirm:</label>
+                    <input type="email" id="confirmEmail" required>
+                </div>
+                <div class="form-buttons">
+                    <button type="submit" class="btn-danger">Delete My Account</button>
+                    <button type="button" class="btn-secondary" onclick="closeModal('deleteAccountModal')">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="profile.js"></script>
+</body>
+</html>

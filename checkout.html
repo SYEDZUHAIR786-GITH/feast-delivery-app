@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feasto - Checkout</title>
+    <link rel="stylesheet" href="cart-checkout.css">
+</head>
+<body>
+    <div class="checkout-container">
+        <!-- Top Navigation Bar -->
+        <nav class="top-navbar">
+            <div class="navbar-content">
+                <a href="order-tracking.html" class="nav-link">Orders</a>
+                <a href="cart.html" class="nav-link">Cart</a>
+                <a href="restaurant-menu.html" class="nav-link">Menu</a>
+                <a href="home.html" class="nav-link">Home</a>
+                <a href="profile.html" class="nav-link">Profile</a>
+                <a href="#" class="nav-link logout-link" onclick="logout(event)">Logout</a>
+            </div>
+        </nav>
+
+        <!-- Checkout Header -->
+        <div class="checkout-header">
+            <h1>Checkout</h1>
+        </div>
+
+        <!-- Checkout Content -->
+        <div class="checkout-content">
+            <!-- Left Section -->
+            <div class="checkout-left">
+                <!-- Delivery Address -->
+                <div class="checkout-section">
+                    <div class="section-header">
+                        <h3>Delivery Address</h3>
+                        <a href="#" class="change-link" onclick="editAddress(event)">✏️ Change</a>
+                    </div>
+                    <div class="address-box">
+                        <p class="address-type">Home</p>
+                        <p class="address-text">123, MG Road, Bengaluru</p>
+                    </div>
+                </div>
+
+                <!-- Payment Method -->
+                <div class="checkout-section">
+                    <h3>Payment Method</h3>
+                    <div class="payment-options">
+                        <label class="payment-option">
+                            <input type="radio" name="payment" value="upi" checked>
+                            <span class="payment-icon">💳</span>
+                            <span class="payment-name">UPI</span>
+                        </label>
+                        <label class="payment-option">
+                            <input type="radio" name="payment" value="credit">
+                            <span class="payment-icon">💳</span>
+                            <span class="payment-name">Credit Card</span>
+                        </label>
+                        <label class="payment-option">
+                            <input type="radio" name="payment" value="wallet">
+                            <span class="payment-icon">👛</span>
+                            <span class="payment-name">Wallet</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Section - Order Summary -->
+            <div class="checkout-right">
+                <div class="order-summary-box">
+                    <h3>Order Summary</h3>
+                    <div class="summary-row">
+                        <span>Items(2)</span>
+                        <span id="checkoutItemTotal">₹ 648</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Delivery charge</span>
+                        <span id="checkoutDeliveryCharge">₹ 40</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Taxes</span>
+                        <span id="checkoutTaxes">₹ 32</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Grand Total</span>
+                        <span id="checkoutGrandTotal">₹ 720</span>
+                    </div>
+                    <button class="btn-place-order" onclick="placeOrder()">Place Order →</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Address Modal -->
+    <div id="addressModal" class="modal">
+        <div class="modal-content">
+            <h2>Change Delivery Address</h2>
+            <form onsubmit="saveAddress(event)">
+                <div class="form-group">
+                    <label>Address Type</label>
+                    <select id="addressType">
+                        <option value="home">Home</option>
+                        <option value="work">Work</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Full Address</label>
+                    <textarea id="addressText" rows="3" required></textarea>
+                </div>
+                <div class="form-buttons">
+                    <button type="submit" class="btn-primary">Save Address</button>
+                    <button type="button" class="btn-secondary" onclick="closeAddressModal()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="cart-checkout.js"></script>
+</body>
+</html>

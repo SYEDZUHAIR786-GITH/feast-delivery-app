@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feasto - Cart</title>
+    <link rel="stylesheet" href="cart-checkout.css">
+</head>
+<body>
+    <div class="cart-container">
+        <!-- Top Navigation Bar -->
+        <nav class="top-navbar">
+            <div class="navbar-content">
+                <a href="order-tracking.html" class="nav-link">Orders</a>
+                <a href="#" class="nav-link active">Cart</a>
+                <a href="restaurant-menu.html" class="nav-link">Menu</a>
+                <a href="home.html" class="nav-link">Home</a>
+                <a href="profile.html" class="nav-link">Profile</a>
+                <a href="#" class="nav-link logout-link" onclick="logout(event)">Logout</a>
+            </div>
+        </nav>
+
+        <!-- Cart Header -->
+        <div class="cart-header">
+            <h1>🛒 Cart</h1>
+        </div>
+
+        <!-- Cart Items -->
+        <div class="cart-content">
+            <div class="cart-items" id="cartItems">
+                <!-- Items will be inserted here by JavaScript -->
+            </div>
+
+            <!-- Order Summary -->
+            <div class="order-summary">
+                <h3>Order Summary</h3>
+                <div class="summary-row">
+                    <span>Item Total</span>
+                    <span id="itemTotal">₹ 0</span>
+                </div>
+                <div class="summary-row">
+                    <span>Delivery charge</span>
+                    <span id="deliveryCharge">₹ 0</span>
+                </div>
+                <div class="summary-row">
+                    <span>Taxes</span>
+                    <span id="taxes">₹ 0</span>
+                </div>
+                <div class="summary-row total">
+                    <span>Grand Total</span>
+                    <span id="grandTotal">₹ 0</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Checkout Button -->
+        <div class="cart-footer">
+            <button class="btn-checkout" onclick="proceedToCheckout()">Proceed to checkout →</button>
+        </div>
+    </div>
+
+    <script src="cart-checkout.js"></script>
+</body>
+</html>
